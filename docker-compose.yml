@@ -1,0 +1,89 @@
+version: '2'
+
+services:
+  memcached:
+    container_name: memcached
+    image: memcached
+    restart: always
+    build:
+      context: images/memcached
+      args:
+        - MEMCACHED_VERSION=1.5.7
+        - ALPINE_VERSION=3.7
+
+  mysql-site.com:
+    container_name: mysql-site.com
+    image: mysql-site.com
+    restart: always
+    build:
+      context: images/mysql
+      args:
+        - ALPINE_VERSION=3.7
+    volumes:
+      - ./volumes/mysql/site.com:/var/lib/mysql
+    shm_size: 500M
+
+  mysql-example.ru:
+    container_name: mysql-example.ru
+    image: mysql-example.ru
+    restart: always
+    build:
+      context: images/mysql
+      args:
+        - ALPINE_VERSION=3.7
+    volumes:
+      - ./volumes/mysql/example.ru:/var/lib/mysql
+    shm_size: 500M
+
+  nginx:
+    container_name: nginx
+    image: nginx
+    restart: always
+    build:
+      context: images/nginx
+      args:
+        - NGINX_VERSION=1.13.11
+        - NPS_VERSION=1.13.35.2
+        - OPENSSL_VERSION=1.1.0h
+        - UBUNTU_VERSION=16.04
+    links:
+      - mysql-example.ru:mysql-example.ru
+      - mysql-site.com:mysql-site.com
+      - php-fpm:php-fpm
+      - memcached:memcached
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./volumes/sites:/var/www
+      - ./volumes/logs:/var/log/nginx
+#      - /etc/letsencrypt/:/etc/letsencrypt
+
+  php-fpm:
+    container_name: php-fpm
+    image: php-fpm
+    restart: always
+    build:
+      context: images/php-fpm
+      args:
+        - TIMEZONE=Asia/Tomsk
+        - ALPINE_VERSION=3.7
+    links:
+      - memcached:memcached
+    volumes:
+      - ./volumes/sites:/var/www
+
+#  phpmyadmin:
+#    container_name: phpmyadmin
+#    build:
+#      context: images/phpmyadmin
+#      args:
+#        - VERSION=4.8.0
+#        - PHP_VERSION=7.2-fpm-alpine
+#    environment:
+#     - PMA_ARBITRARY=1
+#    ports:
+#     - 999:80
+#    links:
+#      - mysql-example.ru:mysql-example.ru
+#      - mysql-site.com:site.com
