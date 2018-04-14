@@ -90,4 +90,4 @@ services:
 #     - 999:80
 #    links:
 #      - mysql-example.ru:mysql-example.ru
-#      - mysql-site.com:site.com
+#      - mysql-site.com:mysql-site.com
