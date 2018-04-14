@@ -1,6 +1,13 @@
 ARG ALPINE_VERSION
 FROM alpine:${ALPINE_VERSION}
 
+ARG TIMEZONE
+
+RUN apk update && \
+  apk add tzdata && \
+  cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && \
+  echo "${TIMEZONE}" > /etc/timezone
+
 RUN apk update && \
   apk add \
     mariadb \

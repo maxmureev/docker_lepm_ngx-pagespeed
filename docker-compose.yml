@@ -8,6 +8,7 @@ services:
     build:
       context: images/memcached
       args:
+        - TIMEZONE=Asia/Tomsk
         - MEMCACHED_VERSION=1.5.7
         - ALPINE_VERSION=3.7
 
@@ -18,6 +19,7 @@ services:
     build:
       context: images/mysql
       args:
+        - TIMEZONE=Asia/Tomsk
         - ALPINE_VERSION=3.7
     volumes:
       - ./volumes/mysql/site.com:/var/lib/mysql
@@ -30,6 +32,7 @@ services:
     build:
       context: images/mysql
       args:
+        - TIMEZONE=Asia/Tomsk
         - ALPINE_VERSION=3.7
     volumes:
       - ./volumes/mysql/example.ru:/var/lib/mysql
@@ -42,6 +45,7 @@ services:
     build:
       context: images/nginx
       args:
+        - TIMEZONE=Asia/Tomsk
         - NGINX_VERSION=1.13.11
         - NPS_VERSION=1.13.35.2
         - OPENSSL_VERSION=1.1.0h

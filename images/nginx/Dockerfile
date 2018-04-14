@@ -5,6 +5,13 @@ ENV SOURCE_DIR=/tmp
 ARG NGINX_VERSION
 ARG NPS_VERSION
 ARG OPENSSL_VERSION
+ARG TIMEZONE
+
+RUN apt update && \
+    apt install -y tzdata && \
+    ln -fs /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && \
+    echo "${TIMEZONE}" > /etc/timezone && \
+    dpkg-reconfigure -f noninteractive tzdata
 
 RUN apt-get update && \
   apt-get -y install \

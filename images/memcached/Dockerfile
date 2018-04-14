@@ -3,6 +3,12 @@ FROM alpine:${ALPINE_VERSION}
 
 ENV SOURCE_DIR=/tmp/src
 ARG MEMCACHED_VERSION
+ARG TIMEZONE
+
+RUN apk update && \
+  apk add tzdata && \
+  cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && \
+  echo "${TIMEZONE}" > /etc/timezone
 
 RUN apk update && \
   apk add \
