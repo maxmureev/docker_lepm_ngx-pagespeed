@@ -12,7 +12,7 @@ git clone git@github.com:maxmureev/docker_lepm_ngx-pagespeed.git
 ```
 Copy sites files to `volumes/sites/[site_dir]`.
 
-Start containers
+Start containers:
 ```
 cd docker_lepm_ngx-pagespeed
 docker-compose build && docker-compose up -d
