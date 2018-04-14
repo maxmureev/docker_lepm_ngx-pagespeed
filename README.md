@@ -12,6 +12,12 @@ git clone git@github.com:maxmureev/docker_lepm_ngx-pagespeed.git
 ```
 Copy sites files to `volumes/sites/[site_dir]`.
 
+Start containers
+```
+cd docker_lepm_ngx-pagespeed
+docker-compose build && docker-compose up -d
+```
+
 Create database:
 ```
 # for example.ru
@@ -20,12 +26,6 @@ docker exec -it mysql-example.ru mysql -e 'CREATE DATABASE `base_for_example.ru`
 docker exec -it mysql-site.com mysql -e 'CREATE DATABASE `base_for_site.com` CHARACTER SET utf8 COLLATE utf8_general_ci;'
 ```
 Or create via phpmyadmin
-
-# Start containers
-```
-cd docker_lepm_ngx-pagespeed
-docker-compose build && docker-compose up -d
-```
 
 # Mysql
 The MySQL is configured to work without password with a parameter `--skip-grant-tables`
