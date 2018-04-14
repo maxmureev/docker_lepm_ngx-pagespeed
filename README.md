@@ -36,7 +36,8 @@ Server: mysql `container_name` (mysql-example.ru or mysql-site.com)
 Username: root   
 Password: without password
 
-The phpMyAdmin are intentionally commented out in the docker-compose.yml file, since its inclusion is required only on request
+The phpMyAdmin are intentionally commented out in the docker-compose.yml file, since its inclusion is required only on request   
+phpMyAdmin config is taken [here](https://github.com/phpmyadmin/docker)
 
 # Nginx
 
