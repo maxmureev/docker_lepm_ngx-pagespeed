@@ -125,8 +125,7 @@ RUN apt-get purge -y \
 
 RUN mkdir /var/www/ && \
   mkdir /etc/letsencrypt/ && \
-  useradd -r -s /usr/sbin/nologin nginx && \
-  chown nginx:nginx /var/www/ -R
+  useradd -r -s /usr/sbin/nologin nginx
 
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD pagespeed.conf /etc/nginx/pagespeed.conf
