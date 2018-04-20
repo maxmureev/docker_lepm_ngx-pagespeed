@@ -44,3 +44,7 @@ phpMyAdmin config is taken [here](https://github.com/phpmyadmin/docker)
 > Why Ubuntu, not Alpine?
 
 It's easier. Alpine [ should be patched](https://github.com/wernight/docker-alpine-nginx-pagespeed/blob/master/Dockerfile) to build the ngx-pagespeed module and I do not like it, because I do not want to do Alpine for the sake of Alpine
+
+***
+
+Description in Russian [here](https://notessysadmin.com/lemp-ngx_pagespeed-memcached-and-phpmyadmin-in-docker-containers)
