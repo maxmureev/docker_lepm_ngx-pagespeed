@@ -28,7 +28,7 @@ RUN apt-get update && \
     libpcre3-dev \
     libxslt1-dev \
     libxml2-dev \
-    libgd2-xpm-dev \
+    libgd-dev \
     libgeoip-dev \
     libgoogle-perftools-dev \
     libperl-dev \
@@ -113,7 +113,7 @@ RUN apt-get purge -y \
   libpcre3-dev \
   libxslt1-dev \
   libxml2-dev \
-  libgd2-xpm-dev \
+  libgd-dev \
   libgeoip-dev \
   libgoogle-perftools-dev \
   libperl-dev && \
