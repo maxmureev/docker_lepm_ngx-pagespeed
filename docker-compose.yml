@@ -9,7 +9,7 @@ services:
       context: images/memcached
       args:
         - TIMEZONE=Asia/Tomsk
-        - MEMCACHED_VERSION=1.5.10
+        - MEMCACHED_VERSION=1.5.12
         - ALPINE_VERSION=3.8
 
   mysql-site.com:
@@ -46,9 +46,9 @@ services:
       context: images/nginx
       args:
         - TIMEZONE=Asia/Tomsk
-        - NGINX_VERSION=1.15.3
+        - NGINX_VERSION=1.15.6
         - NPS_VERSION=1.13.35.2
-        - OPENSSL_VERSION=1.1.0i
+        - OPENSSL_VERSION=1.1.1
         - UBUNTU_VERSION=18.04
     links:
       - mysql-example.ru:mysql-example.ru
