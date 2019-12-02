@@ -18,4 +18,5 @@ RUN apk update && \
   chown mysql:mysql /var/lib/mysql -R
 
 COPY my.cnf /etc/mysql/my.cnf
+COPY my.cnf /etc/my.cnf
 CMD ["mysqld", "--user=root", "--skip-grant-tables"]
