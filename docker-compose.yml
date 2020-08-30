@@ -48,7 +48,7 @@ services:
         - TIMEZONE=Asia/Tomsk
         - NGINX_VERSION=1.18.0
         - NPS_VERSION=1.13.35.2
-        - OPENSSL_VERSION=1.1.1d
+        - OPENSSL_VERSION=1.1.1g
         - UBUNTU_VERSION=18.04
     links:
       - mysql-example.ru:mysql-example.ru
