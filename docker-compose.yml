@@ -9,8 +9,8 @@ services:
       context: images/memcached
       args:
         - TIMEZONE=Asia/Tomsk
-        - MEMCACHED_VERSION=1.5.19
-        - ALPINE_VERSION=3.10
+        - MEMCACHED_VERSION=1.6.6
+        - ALPINE_VERSION=3.12.0
 
   mysql-site.com:
     container_name: mysql-site.com
@@ -20,7 +20,7 @@ services:
       context: images/mysql
       args:
         - TIMEZONE=Asia/Tomsk
-        - ALPINE_VERSION=3.10
+        - ALPINE_VERSION=3.12.0
     volumes:
       - ./volumes/mysql/site.com:/var/lib/mysql
     shm_size: 500M
@@ -33,7 +33,7 @@ services:
       context: images/mysql
       args:
         - TIMEZONE=Asia/Tomsk
-        - ALPINE_VERSION=3.10
+        - ALPINE_VERSION=3.12.0
     volumes:
       - ./volumes/mysql/example.ru:/var/lib/mysql
     shm_size: 500M
@@ -46,7 +46,7 @@ services:
       context: images/nginx
       args:
         - TIMEZONE=Asia/Tomsk
-        - NGINX_VERSION=1.17.5
+        - NGINX_VERSION=1.18.0
         - NPS_VERSION=1.13.35.2
         - OPENSSL_VERSION=1.1.1d
         - UBUNTU_VERSION=18.04
@@ -71,7 +71,7 @@ services:
       context: images/php-fpm
       args:
         - TIMEZONE=Asia/Tomsk
-        - ALPINE_VERSION=3.10
+        - ALPINE_VERSION=3.12.0
     links:
       - memcached:memcached
     volumes:
